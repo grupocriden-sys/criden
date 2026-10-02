@@ -1,0 +1,101 @@
+{
+  "brand": "CRIDEN",
+  "es": {
+    "nav": [
+      "Inicio",
+      "Nosotros",
+      "Equipo",
+      "Proyectos"
+    ],
+    "contact": "Hablemos",
+    "eyebrow": "DESARROLLO DE SOFTWARE · ECUADOR",
+    "hero": "Tecnología que se adapta a tu proyecto.",
+    "intro": "Somos Criden. Diseñamos y construimos plataformas web y soluciones digitales pensadas para lo que tu negocio realmente necesita.",
+    "view": "Explorar proyectos",
+    "featured": "PROYECTO DESTACADO",
+    "about": "De una idea a una solución real.",
+    "aboutLabel": "NOSOTROS",
+    "values": [
+      {
+        "title": "Misión",
+        "text": "Creamos soluciones tecnológicas a la medida de cada cliente, adaptándonos a sus necesidades para ayudarle a llegar de forma innovadora al mercado que busca."
+      },
+      {
+        "title": "Visión",
+        "text": "Ser en los próximos 5 años un referente en desarrollo de soluciones digitales en Ecuador, reconocidos por la cercanía con nuestros clientes y la calidad de lo que construimos."
+      },
+      {
+        "title": "Objetivo",
+        "text": "Acompañar a cada cliente desde la idea hasta el lanzamiento, entregando soluciones funcionales, escalables y fáciles de usar."
+      }
+    ],
+    "teamLabel": "EL EQUIPO",
+    "teamTitle": "Dos personas. Una misma visión.",
+    "profile": "Ver perfil",
+    "projectsLabel": "LO QUE CONSTRUIMOS",
+    "projectsTitle": "Ideas que ya están en juego.",
+    "case": "Ver caso de estudio",
+    "contactTitle": "Tu próxima idea empieza con una conversación.",
+    "contactText": "Los canales de contacto estarán disponibles próximamente.",
+    "footer": "Hecho en Ecuador",
+    "back": "Volver a Criden",
+    "role": "Cofundador de Criden",
+    "bio": "Biografía profesional pendiente de completar.",
+    "problem": "El reto",
+    "solution": "La solución",
+    "skills": "Tecnologías",
+    "private": "Espacio privado",
+    "privateText": "Esta área requiere configuración de autenticación antes de habilitarse.",
+    "admin": "Administración del contenido",
+    "adminText": "La edición con TinaCMS se habilitará en la fase 5. El contenido inicial está separado de los componentes."
+  },
+  "en": {
+    "nav": [
+      "Home",
+      "About",
+      "Team",
+      "Projects"
+    ],
+    "contact": "Let’s talk",
+    "eyebrow": "SOFTWARE DEVELOPMENT · ECUADOR",
+    "hero": "Technology that fits your project.",
+    "intro": "We are Criden. We design and build web platforms and digital solutions around what your business really needs.",
+    "view": "Explore projects",
+    "featured": "FEATURED PROJECT",
+    "about": "From an idea to a real solution.",
+    "aboutLabel": "ABOUT US",
+    "values": [
+      {
+        "title": "Mission",
+        "text": "We create technology solutions tailored to each client, adapting to their needs to help them reach their market in innovative ways."
+      },
+      {
+        "title": "Vision",
+        "text": "Over the next five years, become a reference for digital solutions in Ecuador, known for close client relationships and the quality of our work."
+      },
+      {
+        "title": "Goal",
+        "text": "Support each client from idea to launch with functional, scalable solutions that are easy to use."
+      }
+    ],
+    "teamLabel": "OUR TEAM",
+    "teamTitle": "Two people. One shared vision.",
+    "profile": "View profile",
+    "projectsLabel": "WHAT WE BUILD",
+    "projectsTitle": "Ideas already in play.",
+    "case": "Read case study",
+    "contactTitle": "Your next idea starts with a conversation.",
+    "contactText": "Contact channels will be available soon.",
+    "footer": "Made in Ecuador",
+    "back": "Back to Criden",
+    "role": "Criden cofounder",
+    "bio": "Professional biography to be completed.",
+    "problem": "The challenge",
+    "solution": "The solution",
+    "skills": "Technologies",
+    "private": "Private workspace",
+    "privateText": "Authentication must be configured before this area is enabled.",
+    "admin": "Content administration",
+    "adminText": "TinaCMS editing will be enabled in phase 5. Initial content is separate from components."
+  }
+}

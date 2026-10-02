@@ -27,7 +27,7 @@ Las iniciales sustituyen fotografías pendientes. La ilustración de Super Gol K
 
 ## Límites del boceto
 
-TinaCMS, Supabase, Google Calendar y formulario de contacto todavía no están conectados. `/admin` y `/workspace` solo muestran avisos de configuración y NO sirven datos privados. No habilitar funciones privadas hasta implementar autenticación en servidor y RLS. El repositorio remoto y Vercel no están creados ni conectados desde esta entrega.
+TinaCMS, Supabase, Google Calendar y formulario de contacto todavía no están conectados. `/admin` y `/workspace` solo muestran avisos de configuración y NO sirven datos privados. No habilitar funciones privadas hasta implementar autenticación en servidor y RLS. El código está cargado en `grupocriden-sys/criden`. Vercel todavía no está conectado ni desplegado.
 
 ## Subir a GitHub
 

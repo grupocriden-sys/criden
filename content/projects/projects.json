@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "super-gol-kids",
+    "name": "Super Gol Kids",
+    "members": [
+      "cristian",
+      "denis"
+    ],
+    "type": "criden",
+    "technologies": [
+      "Next.js",
+      "Supabase",
+      "Tailwind",
+      "Vercel"
+    ],
+    "es": {
+      "summary": "Una plataforma para gestionar campeonatos de fútbol formativo.",
+      "problem": "Organizar la información y la gestión de campeonatos de fútbol formativo.",
+      "solution": "Una plataforma web desarrollada con Next.js y Supabase."
+    },
+    "en": {
+      "summary": "A platform for managing youth football tournaments.",
+      "problem": "Organize information and management for youth football tournaments.",
+      "solution": "A web platform built with Next.js and Supabase."
+    }
+  }
+]
