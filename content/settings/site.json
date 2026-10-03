@@ -47,7 +47,18 @@
     "private": "Espacio privado",
     "privateText": "Esta área requiere configuración de autenticación antes de habilitarse.",
     "admin": "Administración del contenido",
-    "adminText": "La edición con TinaCMS se habilitará en la fase 5. El contenido inicial está separado de los componentes."
+    "adminText": "La edición con TinaCMS se habilitará en la fase 5. El contenido inicial está separado de los componentes.",
+    "experience": "Experiencia",
+    "education": "Estudios",
+    "skillsLabel": "Habilidades",
+    "contactMe": "Contactar",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "downloadCv": "Descargar CV",
+    "roleFallback": "Cofundador de Criden",
+    "independent": "Independiente",
+    "whatsapp": "WhatsApp",
+    "ideaStatus": "En definición"
   },
   "en": {
     "nav": [
@@ -96,6 +107,17 @@
     "private": "Private workspace",
     "privateText": "Authentication must be configured before this area is enabled.",
     "admin": "Content administration",
-    "adminText": "TinaCMS editing will be enabled in phase 5. Initial content is separate from components."
+    "adminText": "TinaCMS editing will be enabled in phase 5. Initial content is separate from components.",
+    "experience": "Experience",
+    "education": "Education",
+    "skillsLabel": "Skills",
+    "contactMe": "Get in touch",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "downloadCv": "Download CV",
+    "roleFallback": "Criden cofounder",
+    "independent": "Independent",
+    "whatsapp": "WhatsApp",
+    "ideaStatus": "In definition"
   }
 }

@@ -1,6 +1,6 @@
 import {notFound} from 'next/navigation';
 import Link from 'next/link';
-import {projects,content,isLang} from '@/lib/content';
+import {cridenProjects as projects,content,isLang} from '@/lib/content';
 import {Header,Footer,ProjectVisual} from '@/components/public';
 export function generateStaticParams(){return ['es','en'].flatMap(lang=>projects.map(p=>({lang,slug:p.slug})));}
 export async function generateMetadata({params}:{params:Promise<{lang:string;slug:string}>}){const {lang,slug}=await params;const p=projects.find(p=>p.slug===slug);return {title:`${p?.name ?? 'Proyecto'} · Criden`,description:p&&isLang(lang)?p[lang].summary:undefined};}

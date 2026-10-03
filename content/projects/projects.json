@@ -22,6 +22,246 @@
       "summary": "A platform for managing youth football tournaments.",
       "problem": "Organize information and management for youth football tournaments.",
       "solution": "A web platform built with Next.js and Supabase."
+    },
+    "url": "",
+    "repo": "",
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "aventura-que-conecta",
+    "name": "Aventura que conecta",
+    "members": [
+      "denis"
+    ],
+    "type": "criden",
+    "idea": true,
+    "technologies": [],
+    "url": "",
+    "repo": "",
+    "es": {
+      "summary": "Una plataforma para descubrir experiencias turísticas, comparar guías por idioma y valoraciones, y reservar tu próxima aventura.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "A platform to discover travel experiences, compare guides by language and ratings, and book your next adventure.",
+      "problem": "",
+      "solution": ""
+    },
+    "tags": []
+  },
+  {
+    "slug": "arquitectura-que-cobra-vida",
+    "name": "Arquitectura que cobra vida",
+    "members": [
+      "denis"
+    ],
+    "type": "criden",
+    "idea": true,
+    "technologies": [],
+    "tags": [
+      "Arquitectura",
+      "Experiencia inmersiva",
+      "Portafolio"
+    ],
+    "url": "",
+    "repo": "",
+    "es": {
+      "summary": "Un portafolio inmersivo donde las obras se revelan a medida que recorres la página. Una experiencia visual para explorar proyectos arquitectónicos, descubrir sus detalles y conectar con su creador.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "An immersive portfolio where the works are revealed as you scroll. A visual experience to explore architectural projects, discover their details and connect with their creator.",
+      "problem": "",
+      "solution": ""
     }
+  },
+  {
+    "slug": "bot-caja-cercana",
+    "name": "Bot Telegram · Caja Cercana",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "Python",
+      "Telegram Bot",
+      "SQLite",
+      "Haversine"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/Bot_cajacercana",
+    "es": {
+      "summary": "Bot para técnicos de un ISP: recibe la ubicación, calcula la caja de fibra más cercana y devuelve la ruta en el mapa.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Bot for ISP technicians: it receives the location, finds the nearest fiber box and returns the route on the map.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "bot-registro-cajas",
+    "name": "Bot Telegram · Registro de Cajas",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "Python",
+      "Telegram Bot"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/bot_registro_cajas",
+    "es": {
+      "summary": "Bot para registrar cajas de red desde campo, con datos operativos y ubicación, y construir un inventario técnico confiable.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Bot to register network boxes from the field, with operational data and location, to build a reliable technical inventory.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "bot-reportes-telecom",
+    "name": "Bot Telegram · Reportes Telecom",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "Python",
+      "Telegram Bot"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/Bot_Reportes_Telecom",
+    "es": {
+      "summary": "Bot para registrar novedades, incidencias e inspecciones técnicas de telecomunicaciones con seguimiento desde Telegram.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Bot to log telecom incidents and inspections with follow-up from Telegram.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "sistema-contable",
+    "name": "Sistema Contable",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "React",
+      "Flask",
+      "MySQL"
+    ],
+    "url": "https://sistema-contable-sepia.vercel.app",
+    "repo": "https://github.com/dennysh/Sistema-Contable",
+    "es": {
+      "summary": "Sistema contable web con dashboard financiero, clientes, proveedores, inventario, facturas, pagos, nómina y asientos contables.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Web accounting system with a financial dashboard, customers, suppliers, inventory, invoices, payments, payroll and ledger entries.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "campeonato-futbol",
+    "name": "Cronograma de campeonatos",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "TypeScript"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/Campeonato-Futbol",
+    "es": {
+      "summary": "Generador automático de cronogramas de partidos todos contra todos.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Automatic round-robin match schedule generator.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "futbol-manager",
+    "name": "Fútbol Manager",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/futbolManager",
+    "es": {
+      "summary": "Aplicación web para gestionar partidos, equipos y jugadores con filtros, perfiles y estadísticas.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "Web app to manage matches, teams and players with filters, profiles and stats.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
+  },
+  {
+    "slug": "dennysh-com",
+    "name": "Dennysh.com",
+    "members": [
+      "denis"
+    ],
+    "type": "independiente",
+    "technologies": [
+      "React",
+      "Vite",
+      "JavaScript"
+    ],
+    "url": "",
+    "repo": "https://github.com/dennysh/Dennysh.com",
+    "es": {
+      "summary": "Mi sitio web personal y portafolio.",
+      "problem": "",
+      "solution": ""
+    },
+    "en": {
+      "summary": "My personal website and portfolio.",
+      "problem": "",
+      "solution": ""
+    },
+    "idea": false,
+    "tags": []
   }
 ]

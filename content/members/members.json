@@ -2,11 +2,207 @@
   {
     "slug": "cristian",
     "name": "Cristian",
-    "initial": "C"
+    "surname": "",
+    "initial": "C",
+    "role": {
+      "es": "",
+      "en": ""
+    },
+    "bio": {
+      "es": "",
+      "en": ""
+    },
+    "links": {
+      "linkedin": "",
+      "github": "",
+      "email": "",
+      "cv": "",
+      "whatsapp": ""
+    },
+    "experience": [],
+    "education": [],
+    "skills": [],
+    "photo": "",
+    "focus": {
+      "title": {
+        "es": "",
+        "en": ""
+      },
+      "intro": {
+        "es": "",
+        "en": ""
+      },
+      "items": [],
+      "closing": {
+        "es": "",
+        "en": ""
+      }
+    }
   },
   {
     "slug": "denis",
-    "name": "Denis",
-    "initial": "D"
+    "name": "Dennys",
+    "surname": "Heras",
+    "initial": "D",
+    "role": {
+      "es": "Técnico en telecomunicaciones y desarrollador de software",
+      "en": "Telecommunications technician and software developer"
+    },
+    "bio": {
+      "es": "Técnico con más de 7 años en redes de fibra óptica que aprendió a programar para resolver los problemas que veía en campo. Hoy construye bots, automatizaciones y sistemas web para operaciones reales.",
+      "en": "Technician with over 7 years in fiber-optic networks who learned to code to solve the problems he saw in the field. Today he builds bots, automations and web systems for real operations."
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/dennysheras/",
+      "github": "https://github.com/dennysh",
+      "email": "dennys14_hq@hotmail.com",
+      "cv": "",
+      "whatsapp": "593960664347"
+    },
+    "experience": [
+      {
+        "period": "2023 — Presente",
+        "org": "Fibratelecom",
+        "title": {
+          "es": "Técnico de campo y gestión de activos",
+          "en": "Field technician and asset management"
+        },
+        "description": {
+          "es": "Control de inventario y contratos, despliegue de redes GPON y automatizaciones para reducir tareas repetitivas.",
+          "en": "Inventory and contract control, GPON network deployment and automations to cut repetitive tasks."
+        }
+      },
+      {
+        "period": "2021 — 2022",
+        "org": "MS@Net",
+        "title": {
+          "es": "ISP Manager",
+          "en": "ISP Manager"
+        },
+        "description": {
+          "es": "Operación integral de un ISP: equipos activos, soporte técnico, gestión comercial y redes GPON.",
+          "en": "End-to-end ISP operation: active equipment, technical support, commercial management and GPON networks."
+        }
+      },
+      {
+        "period": "2018 — 2021",
+        "org": "Afiatic",
+        "title": {
+          "es": "Técnico de redes (contratista CNT)",
+          "en": "Network technician (CNT contractor)"
+        },
+        "description": {
+          "es": "Soporte 24/7 de redes troncales de fibra óptica, localización de fallas y cierre técnico bajo SLA.",
+          "en": "24/7 support for fiber-optic backbone networks, fault location and technical closure under SLAs."
+        }
+      },
+      {
+        "period": "2017 — 2018",
+        "org": "Telydata",
+        "title": {
+          "es": "Auxiliar técnico",
+          "en": "Technical assistant"
+        },
+        "description": {
+          "es": "Instalación y mantenimiento de redes de fibra óptica.",
+          "en": "Installation and maintenance of fiber-optic networks."
+        }
+      }
+    ],
+    "education": [
+      {
+        "period": "2023 — Presente",
+        "org": "Instituto Tecnológico ISMAC",
+        "title": {
+          "es": "Desarrollo de Software",
+          "en": "Software Development"
+        }
+      },
+      {
+        "period": "2021 — 2022",
+        "org": "Learning Bridge",
+        "title": {
+          "es": "Inglés B1",
+          "en": "English B1"
+        }
+      },
+      {
+        "period": "2009 — 2015",
+        "org": "Colegio Fiscomisional Italia",
+        "title": {
+          "es": "Bachiller en Ciencias",
+          "en": "High school diploma (Sciences)"
+        }
+      }
+    ],
+    "skills": [
+      "Python",
+      "JavaScript",
+      "React",
+      "Bots de Telegram",
+      "SQLite",
+      "MySQL",
+      "Git",
+      "Linux",
+      "Redes GPON / LAN",
+      "Automatización"
+    ],
+    "photo": "/uploads/dennys.webp",
+    "focus": {
+      "title": {
+        "es": "Desarrollo y automatización para ISPs",
+        "en": "Development and automation for ISPs"
+      },
+      "intro": {
+        "es": "Combino mi experiencia en telecomunicaciones con el desarrollo de software para crear soluciones adaptadas a proveedores de internet. Cada solución parte de entender cómo funciona la empresa y qué necesita mejorar.",
+        "en": "I combine my telecommunications experience with software development to build solutions tailored to internet service providers. Every solution starts with understanding how the company works and what needs to improve."
+      },
+      "items": [
+        {
+          "title": {
+            "es": "Automatización de procesos",
+            "en": "Process automation"
+          },
+          "description": {
+            "es": "Transformar tareas repetitivas en flujos de trabajo más simples.",
+            "en": "Turn repetitive tasks into simpler workflows."
+          }
+        },
+        {
+          "title": {
+            "es": "Desarrollo a medida",
+            "en": "Custom development"
+          },
+          "description": {
+            "es": "Herramientas adaptadas a las necesidades de tu operación.",
+            "en": "Tools adapted to the needs of your operation."
+          }
+        },
+        {
+          "title": {
+            "es": "Integración de sistemas",
+            "en": "Systems integration"
+          },
+          "description": {
+            "es": "Conectar aplicaciones y datos para reducir pasos manuales.",
+            "en": "Connect applications and data to cut manual steps."
+          }
+        },
+        {
+          "title": {
+            "es": "Herramientas para equipos técnicos",
+            "en": "Tools for technical teams"
+          },
+          "description": {
+            "es": "Facilitar el acceso a la información y el seguimiento del trabajo.",
+            "en": "Make information and work tracking easier to reach."
+          }
+        }
+      ],
+      "closing": {
+        "es": "¿Hay un proceso en tu ISP que te está quitando demasiado tiempo? Hablemos de cómo simplificarlo.",
+        "en": "Is there a process at your ISP taking up too much time? Let’s talk about simplifying it."
+      }
+    }
   }
 ]
