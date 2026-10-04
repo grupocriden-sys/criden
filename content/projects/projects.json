@@ -26,7 +26,10 @@
     "url": "",
     "repo": "",
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "matches",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "aventura-que-conecta",
@@ -49,7 +52,10 @@
       "problem": "",
       "solution": ""
     },
-    "tags": []
+    "tags": [],
+    "visual": "tours",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "arquitectura-que-cobra-vida",
@@ -76,7 +82,10 @@
       "summary": "An immersive portfolio where the works are revealed as you scroll. A visual experience to explore architectural projects, discover their details and connect with their creator.",
       "problem": "",
       "solution": ""
-    }
+    },
+    "visual": "arch",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "bot-caja-cercana",
@@ -104,7 +113,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "bot-registro-cajas",
@@ -130,7 +142,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "bot-reportes-telecom",
@@ -156,7 +171,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "sistema-contable",
@@ -183,7 +201,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "campeonato-futbol",
@@ -208,7 +229,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "futbol-manager",
@@ -235,7 +259,10 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   },
   {
     "slug": "dennysh-com",
@@ -262,6 +289,9 @@
       "solution": ""
     },
     "idea": false,
-    "tags": []
+    "tags": [],
+    "visual": "",
+    "screenshot": "",
+    "accent": ""
   }
 ]

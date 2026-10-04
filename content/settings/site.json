@@ -58,7 +58,18 @@
     "roleFallback": "Cofundador de Criden",
     "independent": "Independiente",
     "whatsapp": "WhatsApp",
-    "ideaStatus": "En definición"
+    "ideaStatus": "En definición",
+    "pickerHint": "toca una idea",
+    "pickerLabel": "Elige un proyecto",
+    "yourIdea": "Tu idea",
+    "yourIdeaText": "Cuéntanos qué necesitas y lo construimos contigo, de la idea al lanzamiento.",
+    "processLabel": "Cómo trabajamos",
+    "process": [
+      "Idea",
+      "Diseño",
+      "Código",
+      "Lanzamiento"
+    ]
   },
   "en": {
     "nav": [
@@ -118,6 +129,17 @@
     "roleFallback": "Criden cofounder",
     "independent": "Independent",
     "whatsapp": "WhatsApp",
-    "ideaStatus": "In definition"
+    "ideaStatus": "In definition",
+    "pickerHint": "pick an idea",
+    "pickerLabel": "Choose a project",
+    "yourIdea": "Your idea",
+    "yourIdeaText": "Tell us what you need and we will build it with you, from idea to launch.",
+    "processLabel": "How we work",
+    "process": [
+      "Idea",
+      "Design",
+      "Code",
+      "Launch"
+    ]
   }
 }
