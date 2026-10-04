@@ -180,7 +180,11 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                     <span>{Number(key.slice(8))}</span>
                   </span>
                   {list.slice(0, MAX_CHIPS).map((it) => (
-                    <span key={it.key} className={`ws-ev tag-${it.color}${it.ext ? " ext" : ""}`}>
+                    <span
+                      key={it.key}
+                      title={`${it.all_day ? "" : `${fmtTime(it.starts_at)} `}${it.title}`}
+                      className={`ws-ev tag-${it.color}${it.ext ? " ext" : ""}`}
+                    >
                       {!it.all_day && <b>{fmtTime(it.starts_at)}</b>} {it.title}
                     </span>
                   ))}
