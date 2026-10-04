@@ -3,10 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAccount } from "@/lib/auth/account";
+import { decrypt } from "@/lib/calendar/crypto";
+import { isOwner, providers, pushCreate, pushRemove, pushUpdate } from "@/lib/calendar";
 import { toISO } from "@/lib/workspace/dates";
 import { TAG_COLORS } from "@/lib/workspace/tags";
 import {
   EVENT_OWNERS,
+  type CalEvent,
   IDEA_STATUSES,
   PROJECT_STATUSES,
   TASK_STATUSES,
@@ -92,8 +95,12 @@ export async function createEvent(fd: FormData) {
   const f = eventFields(fd);
   if (!f) return fail(back);
   const { date, ...row } = f;
-  const { error } = await supabase.from("events").insert(row);
-  if (error) return fail(back);
+  const { data: created, error } = await supabase.from("events").insert(row).select("*").single();
+  if (error || !created) return fail(back);
+  // Si se pidió, se envía también al Google Calendar de su responsable (no aplica a "ambos").
+  if (fd.get("to_google") === "on" && isOwner(row.owner)) {
+    await pushCreate(supabase, created as CalEvent, row.owner);
+  }
   refresh();
   redirect(back.startsWith("/workspace/calendario") ? calendarPath(date) : back);
 }
@@ -104,8 +111,26 @@ export async function updateEvent(fd: FormData) {
   const f = eventFields(fd);
   if (!id || !f) return fail("/workspace/calendario");
   const { date, ...row } = f;
-  const { error } = await supabase.from("events").update(row).eq("id", id);
-  if (error) return fail(calendarPath(date));
+  const { data: before } = await supabase
+    .from("events")
+    .select("external_id,connection_id")
+    .eq("id", id)
+    .maybeSingle();
+  const { data: updated, error } = await supabase
+    .from("events")
+    .update(row)
+    .eq("id", id)
+    .select("*")
+    .single();
+  if (error || !updated) return fail(calendarPath(date));
+  if (before?.external_id && before.connection_id) {
+    await pushUpdate(supabase, updated as CalEvent, {
+      connection_id: before.connection_id,
+      external_id: before.external_id,
+    });
+  } else if (fd.get("to_google") === "on" && isOwner(row.owner)) {
+    await pushCreate(supabase, updated as CalEvent, row.owner);
+  }
   refresh();
   redirect(calendarPath(date));
 }
@@ -114,9 +139,46 @@ export async function deleteEvent(fd: FormData) {
   const supabase = await db();
   const id = idOf(fd, "id");
   const back = backOf(fd, "/workspace/calendario");
-  if (id) await supabase.from("events").delete().eq("id", id);
+  if (id) {
+    const { data: before } = await supabase
+      .from("events")
+      .select("external_id,connection_id")
+      .eq("id", id)
+      .maybeSingle();
+    await supabase.from("events").delete().eq("id", id);
+    if (before?.external_id && before.connection_id) {
+      await pushRemove(supabase, {
+        connection_id: before.connection_id,
+        external_id: before.external_id,
+      });
+    }
+  }
   refresh();
   redirect(back);
+}
+
+/* ---------- Conexiones a calendarios externos ---------- */
+
+export async function disconnectCalendar(fd: FormData) {
+  const supabase = await db();
+  const id = idOf(fd, "id");
+  if (id) {
+    const { data } = await supabase
+      .from("calendar_connections")
+      .select("provider,refresh_token_enc")
+      .eq("id", id)
+      .maybeSingle();
+    if (data) {
+      try {
+        await providers[data.provider]?.revoke?.(decrypt(data.refresh_token_enc));
+      } catch {
+        // Si no se pudo revocar en el proveedor, igual se borra la conexión local.
+      }
+      await supabase.from("calendar_connections").delete().eq("id", id);
+    }
+  }
+  refresh();
+  redirect("/workspace/conexiones");
 }
 
 /* ---------- Proyectos ---------- */

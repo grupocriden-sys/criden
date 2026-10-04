@@ -30,6 +30,7 @@
       "projects": "Proyectos",
       "ideas": "Ideas",
       "tags": "Etiquetas",
+      "connections": "Conexiones",
       "admin": "Administración",
       "site": "Ver web",
       "signOut": "Cerrar sesión",
@@ -129,10 +130,22 @@
       "noEvents": "Sin eventos este día.",
       "more": "más",
       "google": "Google Calendar",
-      "googleSoon": "Conexión con Google Calendar: próximamente. Las etiquetas ya tienen su color de Google.",
       "fromTask": "Desde la tarea",
       "save": "Guardar evento",
-      "weekdayHint": "Toca un día para ver y crear eventos."
+      "weekdayHint": "Toca un día para ver y crear eventos.",
+      "external": "Google",
+      "openExternal": "Abrir en Google Calendar",
+      "toGoogle": "Enviar a Google Calendar",
+      "toGoogleHint": "Se envía al calendario de la persona elegida. No aplica a “Ambos”.",
+      "toGoogleNone": "Conecta un calendario para enviar eventos.",
+      "connectLink": "Ir a Conexiones",
+      "syncFailed": "No se pudo leer un calendario conectado. Revisa la conexión.",
+      "availability": "Horarios libres para los dos",
+      "availabilityHint": "Entre las 08:00 y las 20:00, en bloques de 30 minutos o más.",
+      "availabilityNone": "No hay horarios libres en común este día.",
+      "availabilityNeed": "Conecta el calendario de Cristian y el de Dennys para ver cuándo están libres los dos.",
+      "externalBadge": "Calendario externo",
+      "syncedWith": "Este evento está sincronizado con Google Calendar: los cambios y el borrado también se aplican allá."
     },
     "projects": {
       "title": "Proyectos",
@@ -194,6 +207,31 @@
       "name": "Nombre",
       "color": "Color",
       "google": "Color en Google Calendar"
+    },
+    "connections": {
+      "title": "Conexiones",
+      "text": "Conecta tu calendario para ver tu disponibilidad y enviar eventos desde Criden. Cada persona conecta el suyo.",
+      "connect": "Conectar",
+      "reconnect": "Volver a conectar",
+      "disconnect": "Desconectar",
+      "connectedAs": "Conectado como",
+      "notConnected": "Sin conectar",
+      "confirmDisconnect": "Sí, desconectar",
+      "disconnectHint": "Criden deja de leer ese calendario y se revoca el permiso en Google. Los eventos ya creados no se borran.",
+      "setupTitle": "Falta configurar",
+      "setupText": "Agrega estas variables en .env.local y reinicia la web:",
+      "redirectTitle": "Dirección de redirección",
+      "redirectText": "Debe estar registrada en Google Cloud, en el cliente OAuth:",
+      "ok": "Calendario conectado.",
+      "errors": {
+        "config": "Faltan variables de entorno para conectar. Revisa la sección “Falta configurar”.",
+        "denied": "La conexión se canceló o no se pudo verificar. Inténtalo de nuevo.",
+        "failed": "No se pudo completar la conexión. Inténtalo de nuevo."
+      },
+      "providers": {
+        "google": "Google Calendar"
+      },
+      "later": "Más proveedores se podrán sumar aquí."
     }
   }
 }

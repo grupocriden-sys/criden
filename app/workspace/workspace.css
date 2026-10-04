@@ -647,6 +647,10 @@
   background: var(--tint-2);
 }
 .ws-day-num {
+  display: flex;
+  width: 100%;
+}
+.ws-day-num span {
   display: inline-grid;
   place-items: center;
   width: 26px;
@@ -655,7 +659,7 @@
   font-size: 13px;
   font-weight: 600;
 }
-.ws-day.today .ws-day-num {
+.ws-day.today .ws-day-num span {
   background: var(--navy);
   color: #fff;
 }
@@ -988,7 +992,9 @@
     right: 0;
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(64px, 1fr);
+    overflow-x: auto;
     gap: 2px;
     padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
     background: var(--surface);
@@ -1016,10 +1022,6 @@
     min-height: 62px;
     gap: 4px;
     padding: 4px;
-  }
-  .ws-day-num {
-    width: 100%;
-    justify-content: start;
   }
   .ws-ev {
     width: 9px;
@@ -1059,4 +1061,98 @@
 /* La web pública subraya los enlaces de nav; aquí no */
 .ws nav a {
   background-image: none;
+}
+
+/* ---------- Calendarios externos y conexiones ---------- */
+.tag-gray {
+  --c-bg: #e8ecf1;
+  --c-fg: #34445a;
+  --c-dot: #8794a5;
+}
+.ws-ev.ext {
+  border-left-style: dashed;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 5px,
+    rgb(255 255 255 / 0.55) 5px 10px
+  );
+}
+.ws-event.ext {
+  border-left-style: dashed !important;
+}
+.ws-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+.ws-slots li {
+  padding: 4px 12px;
+  border: 1.5px solid var(--navy);
+  border-radius: 999px;
+  background: #e1f0d2;
+  font-size: 13px;
+  font-weight: 600;
+}
+.ws-ok {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #e1f0d2;
+  color: #27500a;
+  font-size: 14px;
+}
+.ws-setup {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1.5px dashed var(--navy);
+  border-radius: 8px;
+  background: var(--tint-2);
+  font-size: 14px;
+}
+.ws-setup p {
+  margin: 0 0 6px;
+}
+.ws-setup ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.ws-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.ws code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--tint-2);
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+.ws-redirect {
+  margin-top: 14px;
+}
+@media (max-width: 900px) {
+  .ws-ev.ext {
+    background: transparent;
+    border: 2px solid var(--c-dot);
+  }
+}
+
+/* Fecha y hora se ajustan al ancho del panel, sea celular, tableta o computador */
+.ws input[type="time"],
+.ws input[type="date"] {
+  min-width: 0;
+  padding-inline: 8px;
+  font-size: 14px;
+}
+.ws-fields.two {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 125px), 1fr));
 }

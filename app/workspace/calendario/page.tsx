@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { freeSlots, type Interval } from "@/lib/calendar/availability";
+import { loadConnections, loadExternalEvents, type ExternalItem } from "@/lib/calendar";
 import {
   addDays,
   dayKey,
@@ -15,7 +17,7 @@ import {
   todayKey,
   weekdayLabels,
 } from "@/lib/workspace/dates";
-import { cap } from "@/lib/workspace/format";
+import { cap, eventTimeLabel } from "@/lib/workspace/format";
 import { privateText } from "@/lib/private-content";
 import type { CalEvent, Tag } from "@/lib/workspace/types";
 import { EventForm } from "@/components/workspace/event-form";
@@ -35,38 +37,79 @@ type Search = {
   error?: string;
 };
 
+// Un elemento del calendario: evento propio o de un calendario externo.
+type Item = {
+  key: string;
+  title: string;
+  starts_at: string;
+  ends_at: string;
+  all_day: boolean;
+  color: string;
+  own?: CalEvent;
+  ext?: ExternalItem;
+};
+
 export default async function CalendarPage({ searchParams }: { searchParams: Promise<Search> }) {
   const sp = await searchParams;
   const today = todayKey();
   const month = isMonthKey(sp.m) ? sp.m : isDayKey(sp.d) ? sp.d.slice(0, 7) : today.slice(0, 7);
   const selected = isDayKey(sp.d) ? sp.d : today.startsWith(month) ? today : `${month}-01`;
   const grid = monthGrid(month);
+  const from = dayStartISO(grid[0]);
+  const to = dayStartISO(addDays(grid[grid.length - 1], 1));
 
   const supabase = await createClient();
-  const [tagsRes, projectsRes, eventsRes] = await Promise.all([
+  const [tagsRes, projectsRes, eventsRes, connections] = await Promise.all([
     supabase.from("tags").select("id,name,color").order("name"),
     supabase.from("projects").select("id,name").neq("status", "archivado").order("name"),
-    supabase
-      .from("events")
-      .select("*")
-      .gte("ends_at", dayStartISO(grid[0]))
-      .lt("starts_at", dayStartISO(addDays(grid[grid.length - 1], 1)))
-      .order("starts_at"),
+    supabase.from("events").select("*").gte("ends_at", from).lt("starts_at", to).order("starts_at"),
+    loadConnections(supabase),
   ]);
+  const external = await loadExternalEvents(connections, from, to);
+
   const tags = (tagsRes.data ?? []) as Tag[];
   const projects = (projectsRes.data ?? []) as { id: string; name: string }[];
   const events = (eventsRes.data ?? []) as CalEvent[];
   const projectName = new Map(projects.map((p) => [p.id, p.name]));
 
-  // Eventos por día (un evento de varios días aparece en cada uno).
-  const byDay = new Map<string, CalEvent[]>();
-  for (const e of events) {
-    for (let k = dayKey(e.starts_at); k <= dayKey(e.ends_at); k = addDays(k, 1)) {
-      byDay.set(k, [...(byDay.get(k) ?? []), e]);
+  const items: Item[] = [
+    ...events.map((e) => ({
+      key: e.id,
+      title: e.title,
+      starts_at: e.starts_at,
+      ends_at: e.ends_at,
+      all_day: e.all_day,
+      color: tags.find((x) => e.tag_ids.includes(x.id))?.color ?? "blue",
+      own: e,
+    })),
+    ...external.events.map((x) => ({
+      key: `${x.connection_id}:${x.id}`,
+      title: x.title,
+      starts_at: x.starts_at,
+      ends_at: x.ends_at,
+      all_day: x.all_day,
+      color: "gray",
+      ext: x,
+    })),
+  ].sort((a, b) => a.starts_at.localeCompare(b.starts_at));
+
+  // Elementos por día (uno de varios días aparece en cada uno).
+  const byDay = new Map<string, Item[]>();
+  for (const it of items) {
+    for (let k = dayKey(it.starts_at); k <= dayKey(it.ends_at); k = addDays(k, 1)) {
+      byDay.set(k, [...(byDay.get(k) ?? []), it]);
     }
   }
-  const dayEvents = byDay.get(selected) ?? [];
+  const dayItems = byDay.get(selected) ?? [];
   const editing = sp.e && UUID.test(sp.e) ? events.find((e) => e.id === sp.e) : undefined;
+
+  // Disponibilidad: solo tiene sentido si están conectadas las dos personas.
+  const connectedOwners = [...new Set(connections.map((c) => c.owner))];
+  const bothConnected = connectedOwners.length >= 2;
+  const busy: Interval[] = dayItems
+    .filter((i) => !i.all_day)
+    .map((i) => ({ start: Date.parse(i.starts_at), end: Date.parse(i.ends_at) }));
+  const slots = bothConnected ? freeSlots(selected, busy) : [];
 
   const here = `/workspace/calendario?m=${month}&d=${selected}`;
   const prefill = {
@@ -83,6 +126,12 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
           <h1>{t.calendar.title}</h1>
         </div>
       </header>
+
+      {external.failed.length > 0 && (
+        <p className="ws-error" role="alert">
+          {t.calendar.syncFailed} <Link href="/workspace/conexiones">{t.calendar.connectLink}</Link>
+        </p>
+      )}
 
       <div className="ws-cal">
         <section className="ws-card flush" aria-label={cap(monthLabel(month))}>
@@ -127,15 +176,14 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                   aria-label={cap(fmtDay(key))}
                   aria-current={key === selected ? "date" : undefined}
                 >
-                  <span className="ws-day-num">{Number(key.slice(8))}</span>
-                  {list.slice(0, MAX_CHIPS).map((e) => {
-                    const first = tags.find((x) => e.tag_ids.includes(x.id));
-                    return (
-                      <span key={e.id} className={`ws-ev tag-${first?.color ?? "blue"}`}>
-                        {!e.all_day && <b>{fmtTime(e.starts_at)}</b>} {e.title}
-                      </span>
-                    );
-                  })}
+                  <span className="ws-day-num">
+                    <span>{Number(key.slice(8))}</span>
+                  </span>
+                  {list.slice(0, MAX_CHIPS).map((it) => (
+                    <span key={it.key} className={`ws-ev tag-${it.color}${it.ext ? " ext" : ""}`}>
+                      {!it.all_day && <b>{fmtTime(it.starts_at)}</b>} {it.title}
+                    </span>
+                  ))}
                   {list.length > MAX_CHIPS && (
                     <span className="ws-more">
                       +{list.length - MAX_CHIPS} {t.calendar.more}
@@ -150,20 +198,70 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
         <aside className="ws-stack" aria-label={cap(fmtDay(selected))}>
           <section className="ws-card">
             <h2>{cap(fmtDay(selected))}</h2>
-            {dayEvents.length === 0 ? (
+            {dayItems.length === 0 ? (
               <p className="ws-empty">{t.calendar.noEvents}</p>
             ) : (
               <ul className="ws-list">
-                {dayEvents.map((e) => (
-                  <EventRow
-                    key={e.id}
-                    event={e}
-                    tags={tags}
-                    projectName={e.project_id ? projectName.get(e.project_id) : undefined}
-                    editHref={`${here}&e=${e.id}`}
-                  />
-                ))}
+                {dayItems.map((it) =>
+                  it.own ? (
+                    <EventRow
+                      key={it.key}
+                      event={it.own}
+                      tags={tags}
+                      projectName={
+                        it.own.project_id ? projectName.get(it.own.project_id) : undefined
+                      }
+                      editHref={`${here}&e=${it.own.id}`}
+                    />
+                  ) : (
+                    <li key={it.key} className="ws-event tag-gray ext">
+                      <div className="ws-event-time">
+                        <span>{eventTimeLabel(it, t.common.allDay)}</span>
+                      </div>
+                      <div className="ws-event-body">
+                        <strong>{it.title}</strong>
+                        <p>
+                          {t.owners[it.ext!.owner]} · {t.calendar.externalBadge}
+                        </p>
+                        {it.ext!.link && (
+                          <a
+                            className="ws-link-btn"
+                            href={it.ext!.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink size={14} aria-hidden="true" />
+                            {t.calendar.openExternal}
+                          </a>
+                        )}
+                      </div>
+                    </li>
+                  ),
+                )}
               </ul>
+            )}
+          </section>
+
+          <section className="ws-card" aria-labelledby="h-libre">
+            <h2 id="h-libre">{t.calendar.availability}</h2>
+            {!bothConnected ? (
+              <p className="ws-hint">
+                {t.calendar.availabilityNeed}{" "}
+                <Link href="/workspace/conexiones">{t.calendar.connectLink}</Link>
+              </p>
+            ) : slots.length === 0 ? (
+              <p className="ws-empty">{t.calendar.availabilityNone}</p>
+            ) : (
+              <>
+                <ul className="ws-slots">
+                  {slots.map((s) => (
+                    <li key={s.start}>
+                      {s.start} – {s.end}
+                    </li>
+                  ))}
+                </ul>
+                <p className="ws-hint">{t.calendar.availabilityHint}</p>
+              </>
             )}
           </section>
 
@@ -178,8 +276,8 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
               prefill={prefill}
               cancelHref={editing ? here : undefined}
               error={sp.error === "1"}
+              hasConnections={connections.length > 0}
             />
-            <p className="ws-hint ws-google">{t.calendar.googleSoon}</p>
           </section>
         </aside>
       </div>

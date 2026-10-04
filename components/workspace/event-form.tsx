@@ -19,6 +19,7 @@ export function EventForm({
   prefill,
   cancelHref,
   error,
+  hasConnections,
 }: {
   event?: CalEvent;
   date: string;
@@ -28,6 +29,7 @@ export function EventForm({
   prefill?: Prefill;
   cancelHref?: string;
   error?: boolean;
+  hasConnections: boolean;
 }) {
   const editing = Boolean(event);
   const day = event ? dayKey(event.starts_at) : date;
@@ -108,6 +110,23 @@ export function EventForm({
           emptyText={t.common.noTags}
           createLabel={t.common.createTags}
         />
+
+        {event?.external_id ? (
+          <p className="ws-hint">{t.calendar.syncedWith}</p>
+        ) : hasConnections ? (
+          <div>
+            <label className="ws-check">
+              <input type="checkbox" name="to_google" />
+              <span>{t.calendar.toGoogle}</span>
+            </label>
+            <p className="ws-hint">{t.calendar.toGoogleHint}</p>
+          </div>
+        ) : (
+          <p className="ws-hint">
+            {t.calendar.toGoogleNone}{" "}
+            <Link href="/workspace/conexiones">{t.calendar.connectLink}</Link>
+          </p>
+        )}
 
         <label className="ws-field">
           <span>{t.calendar.notes}</span>

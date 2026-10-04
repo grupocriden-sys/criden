@@ -2,46 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  CalendarDays,
-  FolderKanban,
-  Globe,
-  LayoutDashboard,
-  Lightbulb,
-  LogOut,
-  Settings2,
-  Tag,
-} from "lucide-react";
+import { Globe, LogOut, Settings2 } from "lucide-react";
+import { MODULES, type ModuleKey } from "@/lib/workspace/modules";
 
-type Labels = {
-  menu: string;
-  home: string;
-  calendar: string;
-  projects: string;
-  ideas: string;
-  tags: string;
-  admin: string;
-  site: string;
-  signOut: string;
-};
-
-const ITEMS = [
-  { href: "/workspace", key: "home", icon: LayoutDashboard, exact: true },
-  { href: "/workspace/calendario", key: "calendar", icon: CalendarDays, exact: false },
-  { href: "/workspace/proyectos", key: "projects", icon: FolderKanban, exact: false },
-  { href: "/workspace/ideas", key: "ideas", icon: Lightbulb, exact: false },
-  { href: "/workspace/etiquetas", key: "tags", icon: Tag, exact: false },
-] as const;
+type Labels = Record<ModuleKey, string> & { menu: string };
 
 // Escritorio: barra lateral. Celular: barra superior breve y pestañas abajo.
+// Los módulos salen de lib/workspace/modules.ts.
 export function WorkspaceNav({ labels, email }: { labels: Labels; email?: string }) {
   const pathname = usePathname();
-  const current = (href: string, exact: boolean) =>
+  const current = (href: string, exact?: boolean) =>
     (exact ? pathname === href : pathname === href || pathname.startsWith(`${href}/`))
       ? ("page" as const)
       : undefined;
 
-  const links = ITEMS.map(({ href, key, icon: Icon, exact }) => (
+  const links = MODULES.map(({ href, key, icon: Icon, exact }) => (
     <Link key={href} href={href} aria-current={current(href, exact)}>
       <Icon size={20} aria-hidden="true" />
       <span>{labels[key]}</span>

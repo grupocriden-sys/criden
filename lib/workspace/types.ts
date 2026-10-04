@@ -48,7 +48,9 @@ export type CalEvent = {
   task_id: string | null;
   notes: string;
   tag_ids: string[];
-  google_event_id: string | null;
+  source: string;
+  external_id: string | null;
+  connection_id: string | null;
 };
 
 export type IdeaStatus =
