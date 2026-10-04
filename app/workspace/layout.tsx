@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
+import "./workspace.css";
 import { requireAccount } from "@/lib/auth/account";
-import { PrivateBar } from "@/components/private/private-bar";
+import { WorkspaceNav } from "@/components/workspace/nav";
+import { privateText } from "@/lib/private-content";
 
-export const metadata: Metadata = { robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  title: "Sala de trabajo · Criden",
+  robots: { index: false, follow: false },
+};
 
 export default async function WorkspaceLayout({ children }: { children: React.ReactNode }) {
   const { user } = await requireAccount("/workspace");
   return (
-    <>
-      <PrivateBar email={user.email} />
-      {children}
-    </>
+    <div className="ws">
+      <WorkspaceNav email={user.email} labels={privateText.workspace.nav} />
+      <main className="ws-main">{children}</main>
+    </div>
   );
 }
