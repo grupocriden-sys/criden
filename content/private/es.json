@@ -1,0 +1,29 @@
+{
+  "login": {
+    "title": "Acceso Criden",
+    "text": "Entra con la cuenta de Criden para administrar la web y usar la sala de trabajo.",
+    "google": "Continuar con Google",
+    "loading": "Abriendo Google…",
+    "back": "Volver a la web",
+    "errors": {
+      "denied": "Esta cuenta no tiene acceso. Usa la cuenta de Criden.",
+      "auth": "No se pudo completar el inicio de sesión. Inténtalo de nuevo.",
+      "config": "Falta configurar Supabase en .env.local.",
+      "provider": "No se pudo abrir Google. Revisa que el proveedor esté activado en Supabase."
+    }
+  },
+  "nav": {
+    "workspace": "Sala de trabajo",
+    "admin": "Administración",
+    "signOut": "Cerrar sesión",
+    "site": "Ver web"
+  },
+  "admin": {
+    "title": "Administración",
+    "text": "Aquí se editará todo el contenido público: textos, perfiles, fotos y proyectos."
+  },
+  "workspace": {
+    "title": "Sala de trabajo",
+    "text": "Aquí vivirán los proyectos, el checklist, las ideas y el calendario de Criden."
+  }
+}
