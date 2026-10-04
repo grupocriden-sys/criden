@@ -43,9 +43,16 @@ git push -u origin main
 
 En Vercel: Add New → Project → Import `criden-web`. Configurar NEXT_PUBLIC_SITE_URL con el dominio real. No cargar secretos en GitHub.
 
+## Acceso privado (Supabase + Google)
+
+- `/admin` y `/workspace` exigen sesión; sin ella redirigen a `/login`.
+- Solo entra la cuenta registrada en `public.allowed_accounts` (grupocriden@gmail.com). Se valida en servidor (`lib/auth/account.ts`) y en la base con `public.is_allowed()`.
+- Migraciones en `supabase/migrations/`: ejecutarlas en Supabase → SQL Editor.
+- Variables necesarias en `.env.local`: `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+
 ## Siguiente fase
 
-Completar contenido real y aprobar el diseño; después TinaCMS y, en su propia fase, Supabase Auth y workspace. La preview HTML es una maqueta autónoma del inicio ES para revisar sin instalar herramientas; la implementación oficial está en `app/`.
+Ver la sección 0 del CLAUDE.md: login con Google, admin propio sobre Supabase y sala de trabajo. La preview HTML es una maqueta autónoma del inicio ES para revisar sin instalar herramientas; la implementación oficial está en `app/`.
 
 ## Verificación de esta entrega
 

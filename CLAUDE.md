@@ -13,6 +13,24 @@ La plataforma de Criden tendrá **tres áreas claramente separadas**:
 
 ---
 
+# 0. Decisiones vigentes (2026-10-03) — prevalecen sobre el resto del documento
+
+1. **Una sola cuenta de acceso**: `grupocriden@gmail.com`. Es la única cuenta que puede entrar a `/admin` y `/workspace`, mediante inicio de sesión con Google (Supabase Auth). La restricción se valida en servidor y en RLS, no solo en la interfaz.
+2. **Sin TinaCMS**: la administración pública se construye a medida sobre Supabase (tablas de contenido público + Supabase Storage para fotos). Lo público y lo privado siguen separados por tablas y políticas distintas. Donde este documento diga TinaCMS/TinaCloud, entender "admin propio sobre Supabase".
+3. **Admin = editar todo lo público**: textos, perfiles, fotos, proyectos, testimonios, SEO, subir imágenes.
+4. **Trabajo local por ahora**: no conectar Vercel ni depender del push a GitHub hasta nuevo aviso. Todos trabajan sobre `main`.
+5. **Sala de trabajo (workspace)**, además de lo descrito en las secciones 10–16:
+   - Proyecto: repositorio GitHub vinculado, contexto del proyecto, imágenes/archivos, ideas, checklist (pendiente / hecho / por revisar) con nota opcional "qué se hizo" al completar, cronograma propio.
+   - Pantalla principal: calendario general con el Google Calendar de cada uno (libre/ocupado) y actividades ligadas a proyecto + tarea (ej.: "martes 19:00 · Tienda · hacer X" aparece en el calendario y en el checklist del proyecto).
+   - Ideas: captura rápida desde el celular, incluso por voz (dictado del dispositivo primero; IA para estructurar después). Presentación visual, nada de texto plano. Una idea puede convertirse en proyecto.
+   - Futuro: "red de ideas" (grafo de ideas relacionadas). El modelo de datos debe permitir enlazar ideas entre sí desde el inicio.
+   - Instalable en el celular (PWA). Menos es más: sin ruido visual.
+6. **Lenguaje visual vigente** (reemplaza "sombras suaves" y "bordes redondeados 10–22 px" de §19; colores y tipografías no cambian): contorno de 2 px en `navy`, sombra dura sin difuminar (`4px 4px 0`), esquinas de 6–12 px, piezas con inclinación leve, una tarjeta de color distinto por bloque, luz que sigue al puntero (`Spotlight`) y letra manuscrita (Caveat) solo para notas puntuales. Se evitan las tarjetas todas iguales con borde fino y sombra difusa. La zona privada usa el mismo sistema pero sin inclinaciones ni adornos: menos es más.
+7. **Portada**: el hero tiene una ventana con selector de proyectos (`components/public/hero-stage.tsx`). Los textos salen de `content/settings/site.json` y los proyectos de `content/projects/projects.json`; el campo `visual` de cada proyecto elige su pantalla ilustrativa. Cuando existan capturas reales, reemplazan esas pantallas.
+8. **Orden de trabajo**: (1) ordenar código base, (2) Supabase + login Google, (3) admin público, (4) workspace base: proyectos, checklist, ideas, (5) archivos, GitHub y cronograma por proyecto, (6) Google Calendar, (7) red de ideas + IA. Deploy en Vercel cuando se decida.
+
+---
+
 # 2. Principios principales
 
 ## 2.1 Nada visible escrito en piedra
