@@ -27,28 +27,27 @@ Las iniciales sustituyen fotografías pendientes. La ilustración de Super Gol K
 
 ## Límites del boceto
 
-TinaCMS, Supabase, Google Calendar y formulario de contacto todavía no están conectados. `/admin` y `/workspace` solo muestran avisos de configuración y NO sirven datos privados. No habilitar funciones privadas hasta implementar autenticación en servidor y RLS. El código está cargado en `grupocriden-sys/criden`. Vercel todavía no está conectado ni desplegado.
+El formulario de contacto y la administración de la web pública (`/admin`) todavía no están hechos. El login con Google, la sala de trabajo y la conexión con Google Calendar sí funcionan. El código está en `grupocriden-sys/criden`.
 
-## Subir a GitHub
+## Desplegar en Vercel
 
-Crear un repositorio vacío llamado `criden-web` en https://github.com/new, preferiblemente privado. No inicializarlo con README porque este proyecto ya lo incluye.
+La cuenta de Vercel no tiene que ser la misma que la de GitHub: solo necesita tener vinculada una cuenta de GitHub con acceso al repositorio `grupocriden-sys/criden`.
 
-```bash
-git init -b main
-git add .
-git commit -m "feat: crear boceto público de Criden"
-git remote add origin https://github.com/TU_USUARIO/criden-web.git
-git push -u origin main
-```
+1. En Vercel: Add New → Project → Import `criden`. Next.js se detecta solo; no hay que cambiar el comando de build.
+2. En **Environment Variables**, pegar el bloque de variables (ver abajo). Los secretos se pegan a mano, nunca van al repositorio.
+3. Deploy. Con la dirección que entregue Vercel (por ejemplo `https://criden.vercel.app`):
+   - agregar `NEXT_PUBLIC_SITE_URL` con esa dirección y volver a desplegar;
+   - Supabase → Authentication → URL Configuration: poner esa dirección en *Site URL* y agregar `<dirección>/auth/callback` en *Redirect URLs*;
+   - Google Cloud → Google Auth Platform → Clientes → agregar `<dirección>` como origen de JavaScript y `<dirección>/api/calendar/callback` como URI de redireccionamiento (la de Supabase se queda).
 
-En Vercel: Add New → Project → Import `criden-web`. Configurar NEXT_PUBLIC_SITE_URL con el dominio real. No cargar secretos en GitHub.
+Variables de producción: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `TOKEN_ENCRYPTION_KEY` y `NEXT_PUBLIC_SITE_URL`. La `TOKEN_ENCRYPTION_KEY` debe ser **la misma** que en local mientras ambos usen el mismo proyecto de Supabase; con otra clave los calendarios conectados no se podrían leer.
 
 ## Acceso privado (Supabase + Google)
 
 - `/admin` y `/workspace` exigen sesión; sin ella redirigen a `/login`.
 - Solo entra la cuenta registrada en `public.allowed_accounts` (grupocriden@gmail.com). Se valida en servidor (`lib/auth/account.ts`) y en la base con `public.is_allowed()`.
 - Migraciones en `supabase/migrations/`: ejecutarlas en Supabase → SQL Editor.
-- Variables necesarias en `.env.local`: `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+- Variables necesarias en `.env.local`: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` y `TOKEN_ENCRYPTION_KEY` (ver `.env.example`).
 
 ## Siguiente fase
 
