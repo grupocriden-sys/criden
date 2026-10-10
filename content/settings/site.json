@@ -36,7 +36,7 @@
     "projectsTitle": "Ideas que ya están en juego.",
     "case": "Ver caso de estudio",
     "contactTitle": "Tu próxima idea empieza con una conversación.",
-    "contactText": "Los canales de contacto estarán disponibles próximamente.",
+    "contactText": "Cuéntanos qué necesitas y lo construimos contigo, de la idea al lanzamiento.",
     "footer": "Hecho en Ecuador",
     "back": "Volver a Criden",
     "role": "Cofundador de Criden",
@@ -69,7 +69,94 @@
       "Diseño",
       "Código",
       "Lanzamiento"
-    ]
+    ],
+    "headline": {
+      "pre": "Desarrollamos ",
+      "mark": "tu página web",
+      "post": ", tu sistema y todo lo que tu negocio necesita."
+    },
+    "siteLine": "Desarrollamos páginas web, sistemas y automatizaciones a la medida · Ecuador",
+    "servicesLabel": "QUÉ HACEMOS",
+    "servicesTitle": "Desarrollamos lo que tu negocio necesita.",
+    "services": [
+      {
+        "title": "Páginas y plataformas web",
+        "text": "Sitios y plataformas pensados para lo que tu negocio realmente necesita."
+      },
+      {
+        "title": "Sistemas a la medida",
+        "text": "Desde un sistema de gestión de campeonatos hasta uno contable."
+      },
+      {
+        "title": "Bots y automatizaciones",
+        "text": "Para que dejes de repetir tareas y tu operación fluya sola."
+      }
+    ],
+    "whatsappCta": "Escribir por WhatsApp",
+    "style": {
+      "button": "Estilo",
+      "title": "Elige cómo ver Criden",
+      "text": "Es el mismo contenido con otra presentación. Puedes cambiar cuando quieras.",
+      "close": "Cerrar",
+      "current": "Actual",
+      "options": {
+        "templo": {
+          "name": "Templo oriental",
+          "text": "Un templo para recorrer, con salas que se pueden visitar."
+        },
+        "ejecutivo": {
+          "name": "Ejecutivo",
+          "text": "Claro, sobrio y directo al grano."
+        },
+        "noche": {
+          "name": "Noche",
+          "text": "Oscuro, moderno y tecnológico."
+        }
+      }
+    },
+    "templo": {
+      "mapLabel": "Mapa ilustrado del templo de Criden",
+      "hint": "Arrastra para recorrer · rueda o pellizco para acercar · toca un edificio",
+      "explore": "Explorar el templo →",
+      "zoomIn": "Acercar",
+      "zoomOut": "Alejar",
+      "seeAll": "Ver todo",
+      "night": "Forzar noche",
+      "day": "Volver al día",
+      "exit": "← Salir al mapa",
+      "closeIntro": "Cerrar y explorar el mapa",
+      "closePaper": "Cerrar pergamino",
+      "hallsLabel": "Salas del templo",
+      "gateText": "Esta es la puerta del templo: cada edificio del mapa es una parte de Criden.",
+      "bridgeText": "Este puente conecta tu proyecto con nosotros.",
+      "halls": {
+        "puerta": {
+          "name": "La Puerta",
+          "nav": "Inicio",
+          "next": "Entrar al Gran Salón →"
+        },
+        "nosotros": {
+          "name": "El Gran Salón",
+          "nav": "Nosotros",
+          "next": "A la Sala de Pergaminos →"
+        },
+        "proyectos": {
+          "name": "Sala de Pergaminos",
+          "nav": "Proyectos",
+          "next": "A la Casa de Té →"
+        },
+        "equipo": {
+          "name": "Casa de Té",
+          "nav": "Equipo",
+          "next": "Al Puente →"
+        },
+        "contacto": {
+          "name": "El Puente",
+          "nav": "Contacto",
+          "next": "Volver a la puerta"
+        }
+      }
+    }
   },
   "en": {
     "nav": [
@@ -107,7 +194,7 @@
     "projectsTitle": "Ideas already in play.",
     "case": "Read case study",
     "contactTitle": "Your next idea starts with a conversation.",
-    "contactText": "Contact channels will be available soon.",
+    "contactText": "Tell us what you need and we will build it with you, from idea to launch.",
     "footer": "Made in Ecuador",
     "back": "Back to Criden",
     "role": "Criden cofounder",
@@ -140,6 +227,98 @@
       "Design",
       "Code",
       "Launch"
-    ]
-  }
+    ],
+    "headline": {
+      "pre": "We build ",
+      "mark": "your website",
+      "post": ", your system and everything your business needs."
+    },
+    "siteLine": "We build custom websites, systems and automations · Ecuador",
+    "servicesLabel": "WHAT WE DO",
+    "servicesTitle": "We build what your business needs.",
+    "services": [
+      {
+        "title": "Websites and web platforms",
+        "text": "Sites and platforms built around what your business really needs."
+      },
+      {
+        "title": "Custom systems",
+        "text": "From a tournament management system to an accounting one."
+      },
+      {
+        "title": "Bots and automations",
+        "text": "So you stop repeating tasks and your operation runs on its own."
+      }
+    ],
+    "whatsappCta": "Message us on WhatsApp",
+    "style": {
+      "button": "Style",
+      "title": "Choose how to see Criden",
+      "text": "Same content, different presentation. You can switch whenever you like.",
+      "close": "Close",
+      "current": "Current",
+      "options": {
+        "templo": {
+          "name": "Eastern temple",
+          "text": "A temple to wander through, with halls you can visit."
+        },
+        "ejecutivo": {
+          "name": "Executive",
+          "text": "Clean, sober and straight to the point."
+        },
+        "noche": {
+          "name": "Night",
+          "text": "Dark, modern and tech-flavored."
+        }
+      }
+    },
+    "templo": {
+      "mapLabel": "Illustrated map of the Criden temple",
+      "hint": "Drag to explore · wheel or pinch to zoom · tap a building",
+      "explore": "Explore the temple →",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "seeAll": "See all",
+      "night": "Force night",
+      "day": "Back to day",
+      "exit": "← Back to the map",
+      "closeIntro": "Close and explore the map",
+      "closePaper": "Close scroll",
+      "hallsLabel": "Temple halls",
+      "gateText": "This is the temple gate: every building on the map is a part of Criden.",
+      "bridgeText": "This bridge connects your project with us.",
+      "halls": {
+        "puerta": {
+          "name": "The Gate",
+          "nav": "Home",
+          "next": "Enter the Great Hall →"
+        },
+        "nosotros": {
+          "name": "The Great Hall",
+          "nav": "About",
+          "next": "To the Scroll Room →"
+        },
+        "proyectos": {
+          "name": "Scroll Room",
+          "nav": "Projects",
+          "next": "To the Tea House →"
+        },
+        "equipo": {
+          "name": "Tea House",
+          "nav": "Team",
+          "next": "To the Bridge →"
+        },
+        "contacto": {
+          "name": "The Bridge",
+          "nav": "Contact",
+          "next": "Back to the gate"
+        }
+      }
+    }
+  },
+  "contactInfo": {
+    "whatsapp": "593960664347",
+    "email": "dennys14_hq@hotmail.com"
+  },
+  "defaultStyle": "templo"
 }

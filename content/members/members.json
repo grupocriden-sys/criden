@@ -37,6 +37,16 @@
         "es": "",
         "en": ""
       }
+    },
+    "avatar": {
+      "skin": "#c98f68",
+      "shade": "#b5795a",
+      "hair": "#1a1412",
+      "style": "short",
+      "beard": false,
+      "glasses": false,
+      "shirt": "#1f3a5f",
+      "bg": "#dce7f3"
     }
   },
   {
@@ -203,6 +213,16 @@
         "es": "¿Hay un proceso en tu ISP que te está quitando demasiado tiempo? Hablemos de cómo simplificarlo.",
         "en": "Is there a process at your ISP taking up too much time? Let’s talk about simplifying it."
       }
+    },
+    "avatar": {
+      "skin": "#e3b08a",
+      "shade": "#cf9873",
+      "hair": "#17110f",
+      "style": "quiff",
+      "beard": false,
+      "glasses": false,
+      "shirt": "#181818",
+      "bg": "#dce7f3"
     }
   }
 ]
