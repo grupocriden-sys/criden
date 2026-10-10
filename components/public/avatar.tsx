@@ -25,13 +25,7 @@ export function Avatar({
 } & Omit<React.SVGProps<SVGSVGElement>, "viewBox">) {
   const clip = useId();
   return (
-    <svg
-      viewBox="0 0 200 200"
-      role="img"
-      aria-label={label}
-      className={className}
-      {...svg}
-    >
+    <svg viewBox="0 0 200 200" role="img" aria-label={label} className={className} {...svg}>
       <defs>
         <clipPath id={clip}>
           <circle cx="100" cy="100" r="100" />

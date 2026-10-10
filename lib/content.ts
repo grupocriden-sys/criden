@@ -2,6 +2,7 @@ import site from "@/content/settings/site.json";
 import projectsData from "@/content/projects/projects.json";
 
 export { default as members } from "@/content/members/members.json";
+export const contactInfo = site.contactInfo;
 export const projects = projectsData;
 export const cridenProjects = projectsData.filter((p) => p.type === "criden" && !p.idea);
 export const ideaProjects = projectsData.filter((p) => p.idea);
