@@ -1202,3 +1202,8 @@ button:focus-visible {
   object-fit: cover;
   object-position: top center;
 }
+.portrait > svg {
+  height: 88%;
+  width: auto;
+  aspect-ratio: 1;
+}

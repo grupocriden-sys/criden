@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { members, projects, content, isLang } from "@/lib/content";
 import { Header, Footer } from "@/components/public";
+import { Avatar } from "@/components/public/avatar";
 export function generateStaticParams() {
   return ["es", "en"].flatMap((lang) => members.map((m) => ({ lang, slug: m.slug })));
 }
@@ -39,7 +40,11 @@ export default async function Page({
         </Link>
         <div className="profile-grid">
           <div className="portrait">
-            {m.photo ? <img src={m.photo} alt={fullName} /> : m.initial}
+            {m.photo ? (
+              <img src={m.photo} alt={fullName} />
+            ) : (
+              <Avatar traits={m.avatar} label={fullName} />
+            )}
           </div>
           <div>
             <p className="eyebrow">{t.role}</p>
