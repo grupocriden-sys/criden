@@ -13,6 +13,7 @@ type Labels = {
 };
 
 type Ctx = {
+  ready: boolean;
   style: StyleId;
   setStyle: (id: StyleId) => void;
   openPicker: () => void;
@@ -39,6 +40,7 @@ export function StyleProvider({
   children: React.ReactNode;
 }) {
   const [style, setStyleState] = useState<StyleId>(DEFAULT_STYLE);
+  const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
   const [phase, setPhase] = useState<"" | "in" | "out">("");
   const lastFocus = useRef<HTMLElement | null>(null);
@@ -47,6 +49,7 @@ export function StyleProvider({
   useEffect(() => {
     const s = document.documentElement.dataset.style;
     if (isStyle(s)) setStyleState(s);
+    setReady(true);
   }, []);
 
   const apply = useCallback((id: StyleId) => {
@@ -95,7 +98,7 @@ export function StyleProvider({
   }, [open, closePicker]);
 
   return (
-    <StyleCtx.Provider value={{ style, setStyle, openPicker, labels }}>
+    <StyleCtx.Provider value={{ ready, style, setStyle, openPicker, labels }}>
       {children}
       {open && (
         <div className="pk-back" onClick={(e) => e.target === e.currentTarget && closePicker()}>

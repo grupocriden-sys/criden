@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { content, isLang } from "@/lib/content";
+import { content, isLang, members, projects, contactInfo } from "@/lib/content";
 import { ExecView } from "@/components/public/site/exec-view";
 import { StyleProvider } from "@/components/public/site/style-provider";
+import { TemploLayer } from "@/components/public/site/templo-layer";
 export function generateStaticParams() {
   return [{ lang: "es" }, { lang: "en" }];
 }
@@ -22,6 +23,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   return (
     <StyleProvider labels={t.style} brand="CRIDEN">
       <ExecView lang={lang} />
+      <TemploLayer lang={lang} t={t} members={members} projects={projects} contact={contactInfo} />
     </StyleProvider>
   );
 }
